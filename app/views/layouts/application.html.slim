@@ -8,4 +8,7 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    .navbar.navbar-defoult.navbar-info.navbar-exipand-sm.bg-info.link.h2
+      = link_to 'Todo', todo_lists_path, class: 'nav-brand text-white text-decoration-none'
+    .container
+      = yield
