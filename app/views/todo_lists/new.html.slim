@@ -1,2 +1,13 @@
-h1 TodoLists#new
-p Find me in app/views/todo_lists/new.html.slim
+h1 タスクの新規作成
+
+= form_for @task, class: 'form' , :url => {:action => :create} do |f|
+  .form-group
+    = f.label :タスク名
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :優先度
+    = f.select :priority, ['高', '中', '低'], {include_blank: '選択'}, class: 'form-control'
+  .form-group
+    = f.label :詳細
+    = f.text_area :description, row: 8, class: 'form-control'
+  = f.submit nil, class: 'btn btn-primary'

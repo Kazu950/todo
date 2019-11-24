@@ -1,2 +1,16 @@
-h1 TodoLists#index
-p Find me in app/views/todo_lists/index.html.slim
+h1 タスク一覧
+
+table.table.table-hover
+  thead.thead-light
+    tr
+      th= Task.human_attribute_name(:タスク名)
+      th= Task.human_attribute_name(:優先度)
+      th= Task.human_attribute_name(:作成日)
+  tbody
+    - @tasks.each do |task|
+      tr
+        td= task.name
+        td= task.priority
+        td= task.created_at
+
+= link_to '新規作成', new_todo_list_path, class: 'btn btn-outline-primary rounded-pill active'
