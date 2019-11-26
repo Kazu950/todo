@@ -4,6 +4,7 @@ class TodoListsController < ApplicationController
   end
 
   def show
+    @task = Task.find(params[:id])
   end
 
   def new
@@ -13,10 +14,18 @@ class TodoListsController < ApplicationController
   def edit
   end
 
+  def delete
+    @task = Task.find(params[:id])
+    @task.destroy
+  end
+
   def create
     @task = Task.new(task_params)
-    @task.save!
-    redirect_to todo_lists_path, notice: "#{@task.name}"
+    if @task.save
+      redirect_to todo_lists_path, notice: "#{@task.name}"
+    else
+      render :new
+    end
   end
 
   private
