@@ -6,7 +6,7 @@ h1 タスクの新規作成
     = f.text_field :name, class: 'form-control'
   .form-group
     = f.label :優先度
-    = f.select :priority, ['高', '中', '低'], {include_blank: '選択'}, class: 'form-control'
+    = f.select :priority, ['高', '中', '低'], {include_blank: '優先度を選択してください'}, class: 'form-control'
   .form-group
     = f.label :詳細
     = f.text_area :description, row: 8, class: 'form-control'

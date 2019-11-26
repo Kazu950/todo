@@ -11,4 +11,7 @@ html
     .navbar.navbar-defoult.navbar-info.navbar-exipand-sm.bg-info.link.h2
       = link_to 'Todo', todo_lists_path, class: 'nav-brand text-white text-decoration-none'
     .container
+      - if flash.notice.present? 
+        .alert.alert-success.flash
+          = flash.notice
       = yield

@@ -6,11 +6,13 @@ table.table.table-hover
       th= Task.human_attribute_name(:タスク名)
       th= Task.human_attribute_name(:優先度)
       th= Task.human_attribute_name(:作成日)
+      th=
   tbody
     - @tasks.each do |task|
       tr
         td= link_to task.name, todo_list_path(task)
         td= task.priority
         td= task.created_at
+        td= link_to 'タスク編集', edit_todo_list_path(@tasks), class: 'btn btn-outline-success rounded-pill active mr-3'
 
-= link_to '新規作成', new_todo_list_path, class: 'btn btn-outline-primary rounded-pill active'
+= link_to '新規作成', new_todo_list_path, class: 'btn btn-outline-primary rounded-pill active interval'

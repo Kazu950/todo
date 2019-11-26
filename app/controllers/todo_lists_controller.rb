@@ -14,15 +14,16 @@ class TodoListsController < ApplicationController
   def edit
   end
 
-  def delete
+  def destroy
     @task = Task.find(params[:id])
     @task.destroy
+    redirect_to todo_lists_path, notice: "タスク「#{@task.name}」を削除しました。"
   end
 
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to todo_lists_path, notice: "#{@task.name}"
+      redirect_to todo_lists_path, notice: "タスク「#{@task.name}」を作成しました！"
     else
       render :new
     end

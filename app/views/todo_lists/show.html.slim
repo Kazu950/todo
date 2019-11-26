@@ -9,6 +9,7 @@ table.table.table-hover
     td= @task.priority
   tr
     td= "タスクの詳細"
-    td= @task.description
+    td= simple_format(h(@task.description), sanitize: true)
 
-=link_to 'タスク編集', edit_todo_list_path, class: 'btn btn-outline-success rounded-pill active'
+=link_to 'タスク編集', edit_todo_list_path(@task), class: 'btn btn-outline-success rounded-pill active'
+=link_to 'タスク削除', todo_list_path(@task), data: {confirm: "タスク#{@task.name}を削除しますか？"}, method: :delete, class: 'btn btn-outline-danger rounded-pill active interval-left'
