@@ -10,4 +10,6 @@ h1 タスク編集
   .form-group
     = f.label :詳細
     = f.text_area :description, row: 8, class: 'form-control'
-  =f.submit '編集', class: 'btn btn-success'
+  =f.submit '編集', class: 'btn btn-outline-success rounded-pill active mr-3'
+  =link_to '一覧へ', todo_lists_path, class: 'btn btn-outline-primary rounded-pill active mr-3'
+

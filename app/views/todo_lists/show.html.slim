@@ -1,5 +1,8 @@
 h1 タスクの詳細
 
+.return
+  =link_to '一覧へ', todo_lists_path, class: 'btn btn-outline-primary rounded-pill active'
+
 table.table.table-hover
   tr
     td.bold= "タスク名"
@@ -11,5 +14,5 @@ table.table.table-hover
     td.bold= "タスクの詳細"
     td= simple_format(h(@task.description), sanitize: true)
 
-=link_to 'タスク編集', edit_todo_list_path(@task), class: 'btn btn-outline-success rounded-pill active'
-=link_to 'タスク削除', todo_list_path(@task), data: {confirm: "タスク#{@task.name}を削除しますか？"}, method: :delete, class: 'btn btn-outline-danger rounded-pill active interval-left'
+=link_to '編集', edit_todo_list_path(@task), class: 'btn btn-outline-success rounded-pill active'
+=link_to '削除', todo_list_path(@task), data: {confirm: "タスク#{@task.name}を削除しますか？"}, method: :delete, class: 'btn btn-outline-danger rounded-pill active interval-left'

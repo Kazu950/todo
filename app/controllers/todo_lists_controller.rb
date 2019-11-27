@@ -1,6 +1,22 @@
 class TodoListsController < ApplicationController
   def index
+    @task = []
     @tasks = Task.all
+    @tasks.each do |task|
+      if task.priority == "高"
+        @task << task
+      end
+    end
+    @tasks.each do |task|
+      if task.priority == "中"
+        @task << task
+      end
+    end
+    @tasks.each do |task|
+      if task.priority == "低"
+        @task << task
+      end
+    end
   end
 
   def show
@@ -25,7 +41,14 @@ class TodoListsController < ApplicationController
     @task = Task.new(task_params)
     if @task.save
       redirect_to todo_lists_path, notice: "タスク「#{@task.name}」を作成しました！"
-    else
+    elsif @task.name.empty? && @task.priority.empty?
+      flash.now[:notice] = 'タスク名と優先度を入力してください'
+      render :new
+    elsif @task.name.empty?
+      flash.now[:notice] = 'タスク名を入力してください'
+      render :new
+    elsif @task.priority.empty?
+      flash.now[:notice] = '優先度を入力してください'
       render :new
     end
   end
@@ -36,6 +59,26 @@ class TodoListsController < ApplicationController
       redirect_to todo_list_path, notice: "タスク#{task.name}を更新しました"
     else
       render :edit
+    end
+  end
+
+  def search
+    @task = []
+    @tasks = Task.search(params[:search])
+    @tasks.each do |task|
+      if task.priority == "高"
+        @task << task
+      end
+    end
+    @tasks.each do |task|
+      if task.priority == "中"
+        @task << task
+      end
+    end
+    @tasks.each do |task|
+      if task.priority == "低"
+        @task << task
+      end
     end
   end
 

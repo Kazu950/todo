@@ -1,4 +1,9 @@
-h1 タスク一覧
+p 検索フォーム (※フォームが空の状態で検索を押すと全件表示できます)
+
+= form_tag todo_lists_search_path, :method => 'get'
+  .form-group
+    = text_field_tag :search
+    = submit_tag '検索', :name => nil
 
 table.table.table-hover
   thead.thead-light
@@ -19,6 +24,4 @@ table.table.table-hover
             td.text-info= task.priority
         td= task.created_at
         td= link_to '編集', edit_todo_list_path(task), class: 'btn btn-outline-success rounded-pill active mr-3'
-
-= link_to '新規作成', new_todo_list_path, class: 'btn btn-outline-primary rounded-pill active interval'
-= link_to 'タスク検索', todo_lists_search_path, class: 'btn btn-outline-info rounded-pill active interval interval-left'
+=link_to '一覧へ', todo_lists_path, class: 'btn btn-outline-primary rounded-pill active'
