@@ -2,13 +2,13 @@ h1 タスクの詳細
 
 table.table.table-hover
   tr
-    td= "タスク名"
+    td.bold= "タスク名"
     td= @task.name
   tr
-    td= "優先度"
+    td.bold= "優先度"
     td= @task.priority
   tr
-    td= "タスクの詳細"
+    td.bold= "タスクの詳細"
     td= simple_format(h(@task.description), sanitize: true)
 
 =link_to 'タスク編集', edit_todo_list_path(@task), class: 'btn btn-outline-success rounded-pill active'
