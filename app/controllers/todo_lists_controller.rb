@@ -1,18 +1,22 @@
 class TodoListsController < ApplicationController
   def index
-    @task = []
     @tasks = Task.all
-    @tasks.each do |task|
+    sort(@tasks)
+  end
+
+  def sort(tasks)
+    @task = []
+    tasks.each do |task|
       if task.priority == "高"
         @task << task
       end
     end
-    @tasks.each do |task|
+    tasks.each do |task|
       if task.priority == "中"
         @task << task
       end
     end
-    @tasks.each do |task|
+    tasks.each do |task|
       if task.priority == "低"
         @task << task
       end
@@ -63,23 +67,8 @@ class TodoListsController < ApplicationController
   end
 
   def search
-    @task = []
     @tasks = Task.search(params[:search])
-    @tasks.each do |task|
-      if task.priority == "高"
-        @task << task
-      end
-    end
-    @tasks.each do |task|
-      if task.priority == "中"
-        @task << task
-      end
-    end
-    @tasks.each do |task|
-      if task.priority == "低"
-        @task << task
-      end
-    end
+    sort(@tasks)
   end
 
   private
