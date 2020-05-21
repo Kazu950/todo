@@ -1,5 +1,5 @@
 # todo
----
+
 Railsを使ってCRUD機能とタスク検索機能のついたTodoアプリを作成しました。
 使用した技術は以下の通りです。
 
@@ -10,7 +10,7 @@ Railsを使ってCRUD機能とタスク検索機能のついたTodoアプリを�
 ## フレームワーク
 - Ruby on Rails
 
-その他
+## その他
 - Git
 - Github
 - Bootstrap
